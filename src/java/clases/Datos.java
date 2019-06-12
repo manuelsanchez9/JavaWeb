@@ -71,6 +71,32 @@ public class Datos {
         }
     }
 
+    public Cliente getCliente(String idCliente) {
+        try {
+            Cliente miCliente = null;
+            String sql = "select * from clientes where "
+                    + "idCliente = '" + idCliente + "'";
+            Statement st = cnn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                miCliente = new Cliente(
+                        rs.getString("idCliente"),
+                        rs.getInt("idTipo"),
+                        rs.getString("nombres"),
+                        rs.getString("apellidos"),
+                        rs.getString("direccion"),
+                        rs.getString("telefono"),
+                        rs.getInt("idCiudad"),
+                        rs.getDate("fechaNacimiento"),
+                        rs.getDate("fechaIngreso"));
+            }
+            return miCliente;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
     public void newUsuario(Usuario miUsuario) {
         try {
             String sql = "insert into usuarios values('"
@@ -80,6 +106,25 @@ public class Datos {
                     + miUsuario.getClave() + "', "
                     + miUsuario.getIdPerfil() + ", '"
                     + miUsuario.getFoto() + "')";
+            Statement st = cnn.createStatement();
+            st.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+        public void newCliente(Cliente miCliente) {
+        try {
+            String sql = "insert into clientes values('"
+                    + miCliente.getIdCliente() + "', "
+                    + miCliente.getIdTipo() + ", '"
+                    + miCliente.getNombres() + "', '"
+                    + miCliente.getApellidos() + "', '"
+                    + miCliente.getDireccion() + "', '"
+                    + miCliente.getTelefono() + "', "
+                    + miCliente.getIdCiudad() + ", '"
+                    + Utilidades.formatDate(miCliente.getFechaNacimiento()) + "', '"
+                    + Utilidades.formatDate(miCliente.getFechaIngreso()) + "')";
             Statement st = cnn.createStatement();
             st.executeUpdate(sql);
         } catch (SQLException ex) {
@@ -110,14 +155,24 @@ public class Datos {
             Statement st = cnn.createStatement();
             st.executeUpdate(sql);
         } catch (SQLException ex) {
-            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);            
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-        public ResultSet getUsuarios() {
+
+    public ResultSet getUsuarios() {
         try {
-            Usuario miUsuario = null;
             String sql = "select * from usuarios";
+            Statement st = cnn.createStatement();
+            return st.executeQuery(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public ResultSet getClientes() {
+        try {
+            String sql = "select * from clientes";
             Statement st = cnn.createStatement();
             return st.executeQuery(sql);
         } catch (SQLException ex) {

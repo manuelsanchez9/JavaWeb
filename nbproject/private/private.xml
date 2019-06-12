@@ -4,11 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Repositories/JavaWEB/web/Usuarios.jsp</file>
-            <file>file:/C:/Repositories/JavaWEB/web/Botones.jsp</file>
-            <file>file:/C:/Repositories/JavaWEB/web/MenuEmpleado.jsp</file>
-            <file>file:/C:/Repositories/JavaWEB/web/ListadoUsuarios.jsp</file>
-            <file>file:/C:/Repositories/JavaWEB/web/MenuAdministrador.jsp</file>
-            <file>file:/C:/Repositories/JavaWEB/web/ReporteFacturas.jsp</file>
+            <file>file:/C:/Repositories/JavaWEB/src/java/clases/Cliente.java</file>
         </group>
     </open-files>
 </project-private>
