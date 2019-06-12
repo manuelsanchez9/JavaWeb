@@ -23,7 +23,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <title>Sistemas de Facturación</title>
     </head>
-    <body> 
+    <body>         
         <%
             HttpSession sesion = request.getSession();
             Usuario miUsuarioLogueado = (Usuario) sesion.getAttribute("usuario");
@@ -242,7 +242,6 @@
         <%
             }
         %>
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <font color="white" class="text-center">
             <h1 class="navbar-brand" >Ingresar Nuevos Usuarios</h1>
@@ -253,7 +252,7 @@
 
             <div class="form-group">
                 <a class="btn btn-outline-primary" href="MenuAdministrador.jsp" role="button">Regresar al menu</a>
-                <a class="btn btn-outline-secondary" href="javascript:history.back(1)" role="button">Regresar a la pagina anterior</a>
+                <a <%=limpiar%> class="btn btn-outline-secondary" href="javascript:history.back(1)" role="button">Regresar a la pagina anterior</a>
             </div>
 
             <form name="usuarios" id="usuarios" action="Usuarios.jsp" method="POST">  
@@ -317,11 +316,11 @@
                         toastr.info('<%=mensaje%>', 'Bienvenid@', {
                             "progressBar": true,
                             "positionClass": "toast-top-center",
-                            "tapToDismiss": false,
-                            "timeOut": "2500"                            
+                            "tapToDismiss": true,
+                            "timeOut": "2500"
                         });
-                    </script>
+                </script>
             </form>   
-        </div>
+        </div> 
     </body>
 </html>
